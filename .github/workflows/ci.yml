@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - dev
+      
+jobs:
+  linter:
+    name: Run linting and format code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.0
+        
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-dev.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            
+      - name: Install Python dependencies
+        run: |
+          pip install --disable-pip-version-check -r requirements-dev.txt
+          
+      - name: Linting and format code
+        run: bash lint.sh
+        
+      - name: Beautify shell scripts
+        uses: illvart/beautysh-action@latest
+        with:
+          args: '*.sh --indent-size 2'
+          
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_user_name: illvart
+          commit_user_email: illvart@protonmail.com
+          commit_author: illvart <illvart@protonmail.com>
+          commit_message: '[auto] ci: apply changes'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "env": {
+    "SERVERLESS": "True"
+  },
+  "functions": {
+    "api/*.py": {
+      "memory": 1024,
+      "maxDuration": 10,
+      "runtime": "@vercel/python@1.2.3-canary.0"
+    }
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/api/bot",
+      "dest": "/api/bot.py"
+    },
+    {
+      "src": "/api",
+      "dest": "/",
+      "status": 308
+    },
+    {
+      "src": "/api/((?!bot).*)",
+      "dest": "/",
+      "status": 308
+    },
+    {
+      "src": "/github",
+      "dest": "https://github.com/illvart/tg-serverless",
+      "status": 308
+    }
+  ]
+}

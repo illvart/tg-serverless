@@ -1,0 +1,11 @@
+.github
+README.md
+LICENSE
+docs/
+api/__init__.py
+app/__init__.py
+scripts
+requirements-dev.txt
+setup.cfg
+.mypy_cache/
+lint.sh

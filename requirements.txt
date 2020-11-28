@@ -1,0 +1,4 @@
+aiogram>=2.11
+sanic>=20.9.1
+Jinja2==2.11.2
+envparse==0.2.0
