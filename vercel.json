@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "env": {
     "SERVERLESS": "True"
   },
