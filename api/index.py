@@ -3,7 +3,7 @@ from sanic import Sanic, response
 
 env = Environment(loader=FileSystemLoader("api/templates"))
 
-app = Sanic()
+app = Sanic("index")
 
 
 @app.route("/")
