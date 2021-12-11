@@ -1,6 +1,8 @@
 {
   "env": {
-    "SERVERLESS": "True"
+    "SERVERLESS": "True",
+    "WEBHOOK_HOST": "https://tg-serverless.vercel.app",
+    "BOT_API_TOKEN": ""
   },
   "routes": [
     {

@@ -1,4 +1,4 @@
 aiogram==2.17.1
-sanic==21.9.3
+sanic==20.9.1
 Jinja2==3.0.3
 envparse==0.2.0
