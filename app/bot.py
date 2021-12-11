@@ -19,7 +19,7 @@ dp.middleware.setup(LoggingMiddleware())
 
 
 async def on_startup(dispatcher: Dispatcher) -> None:
-    if SERVERLESS is True:
+    if SERVERLESS:
         logging.info("🚀 Bot launched as Serverless!")
         logging.info(f"webhook: {WEBHOOK_URL}")
 
@@ -43,10 +43,10 @@ async def on_shutdown(dispatcher: Dispatcher) -> None:
 
 
 def bot_register(webhook: bool = False) -> None:
-    import app.handlers  # noqa: F401
-
     try:
-        if webhook is True and SERVERLESS is True:
+        import app.handlers  # noqa: F401
+
+        if SERVERLESS and webhook:
             executor.start_webhook(
                 dispatcher=dp,
                 webhook_path=WEBHOOK_PATH,
@@ -63,9 +63,8 @@ def bot_register(webhook: bool = False) -> None:
                 on_startup=on_startup,
                 on_shutdown=on_shutdown,
             )
+        return
     except KeyboardInterrupt:
         pass
-    except RuntimeError:
-        return
     except Exception as e:
         logging.exception(e)
