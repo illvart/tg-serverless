@@ -4,11 +4,11 @@ from app.bot import bot_register
 
 # https://api.telegram.org/bot{your_bot_token}/setWebhook?url={your_vercel_domain_url}/api/bot
 
-app = Sanic(__name__)
+app = Sanic()
 
 
 @app.route("/api/bot", strict_slashes=False)
-async def bot(request):
+async def _bot(request):
     return response.text("This endpoint is meant for bot and telegram communication.")
 
 

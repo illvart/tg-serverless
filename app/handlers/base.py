@@ -1,4 +1,4 @@
-import asyncio
+from asyncio import sleep
 
 from aiogram import __main__ as aiogram_core
 from aiogram import filters, md, types
@@ -70,7 +70,7 @@ async def cmd_version(message: types.Message) -> None:
     content_types=types.ContentType.TEXT,
 )
 async def text_equals(message: types.Message) -> None:
-    await asyncio.sleep(1)
+    await sleep(1)
     await types.ChatActions.typing()
     await message.reply(message.text)
 

@@ -3,11 +3,11 @@ from sanic import Sanic, response
 
 env = Environment(loader=FileSystemLoader("api/templates"))
 
-app = Sanic(__name__)
+app = Sanic()
 
 
 @app.route("/")
-async def index(request):
+async def _index(request):
     title = "tg-serverless"
     description = "A Telegram bot Python app use Vercel as Serverless Function!"
     color = "#2962ff"
