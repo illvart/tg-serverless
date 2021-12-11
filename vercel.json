@@ -3,13 +3,6 @@
   "env": {
     "SERVERLESS": "True"
   },
-  "functions": {
-    "api/*.py": {
-      "memory": 1024,
-      "maxDuration": 10,
-      "runtime": "@vercel/python@2.1.2-canary.2"
-    }
-  },
   "routes": [
     {
       "src": "/",
