@@ -7,7 +7,7 @@
     "api/*.py": {
       "memory": 1024,
       "maxDuration": 10,
-      "runtime": "@vercel/python@1.2.3-canary.0"
+      "runtime": "@vercel/python"
     }
   },
   "routes": [
