@@ -63,7 +63,9 @@ def bot_register(webhook: bool = False) -> None:
                 on_startup=on_startup,
                 on_shutdown=on_shutdown,
             )
-    except Exception:
-        raise
     except KeyboardInterrupt:
         pass
+    except RuntimeError:
+        return
+    except Exception as e:
+        logging.exception(e)
